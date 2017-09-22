@@ -1,0 +1,18 @@
+module.exports ={
+  FollowedFeeds: "关注动态",
+  MyPosts: "我的帖子",
+  SavedPosts: "我的收藏",
+  MyGiftpacks: "我的礼包",
+  NewPost: "XXXX 发表新帖子",
+  RepliedPost: "XXXX 回复了帖子",
+  SavedPost: "XXXX 收藏了帖子",
+  MyFollows : "我的关注",
+  AllFollows: "全部关注" ,
+  RecommendedPlayers: "玩家推荐" ,
+  AccountSettings: "账号设置",
+  Feedback: "意见反馈",
+  GiftpackCode: "礼包码",
+  NothingPublished: "暂无帖子，你还没有发布任何帖子哦！前往论坛",
+  NothingSave: "暂无帖子，你还没有收藏任何帖子哦！",
+  NothingGiftpacks: "暂无礼包，你还没有领取任何礼包哦！去领取",
+};

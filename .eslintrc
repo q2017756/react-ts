@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "globals": {
+    "__DEV__"      : false,
+    "__TEST__"     : false,
+    "__PROD__"     : false,
+    "__COVERAGE__" : false
+  },
+  "rules": {
+    "no-cond-assign": "warn",
+    "no-debugger": "warn",
+    "no-dupe-args": "warn",
+    "no-caller": "warn",
+    "no-unmodified-loop-condition": "warn",
+    "no-with": "warn",
+    "no-catch-shadow": "warn"
+  }
+}

@@ -1,0 +1,5 @@
+
+
+export const STATUS_SUCCESS = 200
+export const STATUS_AUTHORIZATION_ERROR = 401
+export const MAX_CONTENT_LENGTH = 500

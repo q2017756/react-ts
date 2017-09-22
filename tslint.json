@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "error",
+  "rulesDirectory": "./src",
+  "extends": [
+  ],
+  "jsRules": {},
+  "rules": {
+  
+  }
+}

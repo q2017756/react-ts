@@ -3,6 +3,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
+import BaseComponent from '../../../../BaseComponent'
 import './Login.scss'
 const FormItem = Form.Item
 
@@ -16,7 +17,7 @@ const STATUS_SUCCESS = 200
 interface Props {
 }
 
-class Login extends React.Component<any, any>{
+class Login extends BaseComponent{
 
   constructor(props: Props) {
     super(props)

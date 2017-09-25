@@ -19,8 +19,12 @@
         "g-common": ["./common"],
         "g-components/*": ["./components/*"],
         "g-components": ["./components"],
+        "g-containers/*": ["./containers/*"],
+        "g-containers": ["./containers"],
         "g-store/*": ["./store/*"],
-        "g-store": ["./store"]
+        "g-store": ["./store"],
+        "g-src/*": ["./*"],
+        "g-src": ["./"]
       }
   },
   "include": [

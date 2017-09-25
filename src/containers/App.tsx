@@ -5,14 +5,14 @@ const browserHistory = createBrowserHistory()
 import { Provider } from 'react-redux';
 import RouteConfig from 'routers/router'
 
-import '../public/css/main.scss';
-import '../public/css/core.scss';
+import '../public/css/main.scss'
+import '../public/css/core.scss'
 import 'antd/dist/antd.css'
 
 class App extends React.Component<any, any> {
 
   shouldComponentUpdate () {
-    return false;
+    return false
   }
 
   render () {
@@ -20,8 +20,8 @@ class App extends React.Component<any, any> {
       <Provider store={this.props.store}>
         <RouteConfig history={browserHistory}/>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

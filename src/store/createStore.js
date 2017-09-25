@@ -6,13 +6,28 @@ const browserHistory = createBrowserHistory()
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
-const createStore = (api = {},history={}) => {
+const createStore = (api = {}, history={}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
 
+  const trackLocationChanged = (store) => (next) => (action) => {
+    const { type, payload } = action
+    const admintest = /(^\/admin)|(^\/bk)/
+    if (type === 'LOCATION_CHANGED' && !admintest.test(payload.pathname)) {
+      const state = store.getState()
+      const { base } = state
+      if (base.userinfo.token) {
+        return store.dispatch(getMe(base.userinfo.token)).then(() => {
+          return next(action)
+        })
+      }
+    }
+    return next(action)
+  }
+
   const middleware = [
-    // trackLocationChanged,
+    trackLocationChanged,
     thunkMiddleware,
     api.middleware,
     routerMiddleware(history),

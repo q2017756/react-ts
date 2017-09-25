@@ -1,17 +1,18 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import './index.scss';
+import * as React from 'react'
+import BaseComponent from 'g-src/BaseComponent'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import './index.scss'
 
 /** 所有需用到的组件 **/
-import Header from './Components/Header';
+import Header from './Components/Header'
 import Footer from './Components/Footer'
 
 interface Props {
   actions: any,
 }
 
-class Home extends React.Component<any, any>  {
+class Home extends BaseComponent  {
 
 	constructor(props: Props) {
 		super(props);
@@ -32,7 +33,7 @@ class Home extends React.Component<any, any>  {
 				</div>
 			   <Footer />
 			</div>
-		);
+		)
 	}
 }
 
@@ -43,4 +44,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators({}, dispatch),
   })
-)(Home as any);
+)(Home as any)

@@ -1,16 +1,17 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import "./index.scss";
+import * as React from 'react'
+import BaseComponent from 'g-src/BaseComponent'
+import { Link } from "react-router-dom"
+import "./index.scss"
 
 interface Props{
 
 }
 
-class Header extends React.Component<any, any>  {
+class Header extends BaseComponent  {
   constructor(props: Props) {
-    super(props);
+    super(props)
     this.state = {
-    };
+    }
   }
 
   componentDidMount() {
@@ -21,14 +22,14 @@ class Header extends React.Component<any, any>  {
     return (
       <header className="menu">
         <ul>
-          <li>React Darkness</li>
+          <li>React Shinezone ts</li>
           <li><Link to="/">首页</Link></li>
-          <li><Link to={{pathname:'/use/a/123/b/abc'}}>构建与使用</Link></li>
-          <li><a href="https://github.com/javaLuo/react-darkness" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><Link to={{pathname:'/use'}}>构建与使用</Link></li>
+          <li><a href="https://github.com/stefaniepei/react-ts" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </header>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header

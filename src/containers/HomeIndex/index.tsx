@@ -1,19 +1,20 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import './index.scss';
+import * as React from 'react'
+import BaseComponent from '../../BaseComponent'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import './index.scss'
 
-const Logo = `${require( '../../public/images/logo.jpg')}`;
+const Logo = `${require( '../../public/images/logo.jpg')}`
 
 interface Props {
   actions: any,
 }
 
-class HomeIndex extends React.Component<any, any> {
+class HomeIndex extends BaseComponent {
 	constructor(props: Props) {
-		super(props);
+		super(props)
 		this.state = {
-		};
+		}
 	}
 
 	componentDidMount() {
@@ -38,4 +39,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators({}, dispatch),
   })
-)(HomeIndex as any);
+)(HomeIndex as any)

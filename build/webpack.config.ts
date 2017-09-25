@@ -31,7 +31,14 @@ const config = {
       inProject(project.srcDir),
       'node_modules',
     ],
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    extensions: [".ts", ".tsx", '.js', '.jsx', '.json'],
+    alias: {
+      'g-common': path.resolve(__dirname, './src/common/'),
+      'g-components': path.resolve(__dirname, './src/components/'),
+      'g-containers': path.resolve(__dirname, './src/containers/'),
+      'g-store': path.resolve(__dirname, './src/store/'),
+      'g-src': path.resolve(__dirname, './src/'),
+    }
   },
   externals: project.externals,
   module: {

@@ -1,19 +1,20 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import './index.scss';
+import * as React from 'react'
+import BaseComponent from '../../BaseComponent'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import './index.scss'
 
-import { Button } from 'antd';
+import { Button } from 'antd'
 
 interface Props {
   base: any;
   actions: any;
 }
 
-class Use extends React.Component<any, any> {
+class Use extends BaseComponent {
 
   constructor(props: Props) {
-    super(props);
+    super(props)
     this.state = {
     };
   }
@@ -31,7 +32,7 @@ class Use extends React.Component<any, any> {
       <div className='page-use'>
         user
       </div>
-    );
+    )
   }
 }
 
@@ -42,4 +43,4 @@ export default connect(
   (dispatch) => ({
     actions: bindActionCreators({  }, dispatch),
   })
-)(Use as any);
+)(Use as any)

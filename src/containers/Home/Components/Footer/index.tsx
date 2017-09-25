@@ -1,12 +1,13 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import './index.scss';
+import * as React from 'react'
+import BaseComponent from 'g-src/BaseComponent'
+import { Link } from 'react-router-dom'
+import './index.scss'
 
 interface Props {
 
 }
 
-class Footer extends React.Component {
+class Footer extends BaseComponent {
 	constructor(props: Props) {
 		super(props);
 		this.state = {
@@ -16,10 +17,10 @@ class Footer extends React.Component {
 	render() {
 		return (
 			<footer className='footer'>
-			   React Darkness
+			   React Shinezone ts
 			</footer>
-		);
+		)
 	}
 }
 
-export default Footer;
+export default Footer

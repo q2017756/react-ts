@@ -11,7 +11,7 @@ npm install       # 安装依赖模块
 ```
 
 ```
-npm run start     # 启动开发环境，默认监听3000端口
+npm run start     # 启动开发环境，默认监听4000端口
 ```
 
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "react-darkness",
+  "name": "react-ts",
   "version": "0.0.1",
   "description": "Get started with React, Redux, and React-Router!",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "compile": "node build/scripts/compile",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
-    "start": "cross-env NODE_ENV=development node build/scripts/start --progress --colors",
+    "start": "cross-env NODE_ENV=development node build/scripts/start",
     "test": "cross-env NODE_ENV=test karma start build/karma.config",
     "test:watch": "npm test -- --watch",
     "lint:fix": "npm run lint -- --fix",
@@ -89,6 +89,7 @@
     "figures": "^2.0.0",
     "file-loader": "^0.11.2",
     "fs-extra": "^4.0.2",
+    "html-to-text": "^3.3.0",
     "html-webpack-plugin": "^2.30.1",
     "karma": "^1.7.1",
     "karma-coverage": "^1.1.1",

@@ -24,6 +24,9 @@ if (currProject.env === 'development') {
     noInfo      : false,
     lazy        : false,
     timings     : true,
+    warnings    : true,
+    errors      : true,
+    errorDetails: true,
     stats: {
       colors: true
     },

@@ -11,6 +11,11 @@ const inProjectSrc = (file) => inProject(project.srcDir, file)
 const __DEV__ = project.env === 'development'
 const __PROD__ = project.env === 'production'
 
+var ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+var HappyPack = require('happypack');
+var happyThreadPool = HappyPack.ThreadPool({ size: 4 });
+
 const config = {
   entry: {
     normalize: [
@@ -52,6 +57,12 @@ const config = {
       __PROD__,
     }, project.globals))
   ],
+  performance: {
+    hints: "error",
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith('.js') && assetFilename.endsWith('.tsx') && assetFilename.endsWith('.ts')
+    }
+  }
 }
 
 // JavaScript
@@ -66,12 +77,6 @@ config.module.rules.push({
   enforce: 'pre',
   loader: 'eslint-loader',
 });
-config.module.rules.push({
-  test: /\.ts|tsx?$/,
-  enforce: 'pre',
-  loader: 'tslint-loader',
-});
-
 // config.module.rules.push({
 //   test: /\.(tsx|ts)$/,
 //   loader: 'ts-loader',
@@ -86,6 +91,18 @@ config.module.rules.push({
 //   },
 //   exclude: /node_modules/
 // });
+// config.module.rules.push({
+//   test: /\.ts|tsx?$/,
+//   enforce: 'pre',
+//   // loader: 'happypack/loader?id=happyts'
+//   loader: 'tslint-loader',
+// });
+config.module.rules.push({
+  test: /\.ts|tsx?$/,
+  // loader: "awesome-typescript-loader",
+  loader: 'happypack/loader?id=happyts',
+  exclude: /node_modules/,
+});
 
 config.module.rules.push({
   test: /\.(js|jsx)$/,
@@ -192,12 +209,6 @@ config.module.rules.push({
   },
 })
 
-config.module.rules.push({
-  test: /\.ts|tsx?$/,
-  loader: "awesome-typescript-loader",
-  exclude: /node_modules/,
-});
-
 // Fonts
 // ------------------------------------
 ;[
@@ -232,6 +243,34 @@ config.plugins.push(new HtmlWebpackPlugin({
   },
 }))
 
+// config.plugins.push(new HappyPack({
+//   id: 'happyts',
+//   loaders: ['tslint-loader'],
+//   threadPool: happyThreadPool,
+//   cache: true,
+//   verbose: true
+// }))
+config.plugins.push(new ForkTsCheckerNotifierWebpackPlugin ({
+  excludeWarnings: true
+}))
+config.plugins.push(new ForkTsCheckerWebpackPlugin ({
+  checkSyntacticErrors: true
+}))
+
+config.plugins.push(new HappyPack({
+  id: 'happyts',
+  threadPool: happyThreadPool,
+  threads: 4,
+  cache: true,
+  verbose: true,
+  loaders: [
+    {
+        path: 'ts-loader',
+        query: { happyPackMode: true }
+    }
+]
+}))
+
 // Development Tools
 // ------------------------------------
 if (__DEV__) {
@@ -252,6 +291,9 @@ if (__PROD__) {
       minimize: true,
       debug: false,
     }),
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new ExtractTextPlugin('/css/[name].[chunkhash:8].css'),
+    // new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: '/js/[name].[chunkhash:8].js'}),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: !!config.devtool,
       comments: true, // 是否删除代码中所有的注释

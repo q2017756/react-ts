@@ -6,4 +6,4 @@
 
 # THANKS
 
-    <name>
+    <javaLuo> -- <react-darkness.git> -- <github>

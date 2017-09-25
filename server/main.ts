@@ -23,6 +23,7 @@ if (currProject.env === 'development') {
     quiet       : false,
     noInfo      : false,
     lazy        : false,
+    timings     : true,
     stats: {
       colors: true
     },

@@ -1,9 +1,9 @@
 const express = require('express')
-const path = require('path')
-const webpack = require('webpack')
-const logger = require('../build/lib/logger')
+const nodePath = require('path')
+const npmWebpack = require('webpack')
+const logger = require('../build/lib/logger.ts')
 const webpackConfig = require('../build/webpack.config.ts')
-const project = require('../project.config')
+const currProject = require('../project.config.ts')
 const compress = require('compression')
 
 const app = express()
@@ -12,13 +12,13 @@ app.use(compress())
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
-if (project.env === 'development') {
-  const compiler = webpack(webpackConfig)
+if (currProject.env === 'development') {
+  const compiler = npmWebpack(webpackConfig)
 
   logger.info('Enabling webpack development and HMR middleware')
   app.use(require('webpack-dev-middleware')(compiler, {
     publicPath  : webpackConfig.output.publicPath,
-    contentBase : path.resolve(project.basePath, project.srcDir),
+    contentBase : nodePath.resolve(currProject.basePath, currProject.srcDir),
     hot         : true,
     quiet       : false,
     noInfo      : false,
@@ -35,13 +35,13 @@ if (project.env === 'development') {
   // these files. This middleware doesn't need to be enabled outside
   // of development since this directory will be copied into ~/dist
   // when the application is compiled.
-  app.use(express.static(path.resolve(project.basePath, 'public')))
+  app.use(express.static(nodePath.resolve(currProject.basePath, 'public')))
 
   // This rewrites all routes requests to the root /index.html file
   // (ignoring file requests). If you want to implement universal
   // rendering, you'll want to remove this middleware.
   app.use('*', function (req, res, next) {
-    const filename = path.join(compiler.outputPath, 'index.html')
+    const filename = nodePath.join(compiler.outputPath, 'index.html')
     compiler.outputFileSystem.readFile(filename, (err, result) => {
       if (err) {
         return next(err)
@@ -63,7 +63,7 @@ if (project.env === 'development') {
   // Serving ~/dist by default. Ideally these files should be served by
   // the web server and not the app server, but this helps to demo the
   // server in production.
-  app.use(express.static(path.resolve(project.basePath, project.outDir)))
+  app.use(express.static(nodePath.resolve(currProject.basePath, currProject.outDir)))
 }
 
 module.exports = app

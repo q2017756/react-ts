@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "compile": "node build/scripts/compile",
+    "compile": "node build/scripts/compile.ts",
     "build": "npm run clean && cross-env NODE_ENV=production npm run compile",
-    "start": "cross-env NODE_ENV=development node build/scripts/start",
+    "start": "cross-env NODE_ENV=development node build/scripts/start.ts",
     "lint:fix": "npm run lint -- --fix",
     "lint": "./node_modules/.bin/tslint -c tslint.json -p tsconfig.json --fix --format stylish"
   },
@@ -18,7 +18,7 @@
   "pre-commit": [
     "lint"
   ],
-  "author": "L",
+  "author": "Stefaniepei",
   "license": "MIT",
   "dependencies": {
     "@types/react": "^16.0.5",

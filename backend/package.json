@@ -1,0 +1,51 @@
+{
+  "name": "GameSite-Backend",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "env NODE_ENV='development' DEBUG='app:*' nodemon index.js --watch ./lib",
+    "generator:api": "node ./bin/api-flush.js",
+    "generator:client-sdk": "node ./bin/sagitta-client-flush.js",
+    "generator:orm": "node ./bin/orm-flush.js",
+    "deploy:dev": "pm2 deploy ecosystem.config.js devserver",
+    "lint": "./node_modules/.bin/eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.shinezoneserver.com:Shinezone-WEB/GameSite-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "ip": "^1.1.5",
+    "joi": "^10.6.0",
+    "md5": "^2.2.1",
+    "multiparty": "^4.1.3",
+    "nodemon": "^1.11.0",
+    "object-assign": "^4.1.1",
+    "sagitta": "git+ssh://git@gitlab.shinezoneserver.com:Shinezone-WEB/Shinezone-WEB-Sagitta.git#master",
+    "sails-memory": "^0.10.7",
+    "sails-mongo": "^0.12.2",
+    "shinezone-js-sdk": "git+ssh://git@gitlab.shinezoneserver.com:Shinezone-SDK/Shinezone-SDK-JavaScript.git#master",
+    "xlsx": "^0.10.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.4.1",
+    "pre-commit": "^1.2.2"
+  }
+}

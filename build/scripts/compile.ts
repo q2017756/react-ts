@@ -3,7 +3,7 @@ const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const logger = require('../lib/logger.ts')
-const webpackConfig = require('../webpack.config.ts')
+const webpackConfig = require('../webpack.config.js')
 const project = require('../../project.config.ts')
 
 const runWebpackCompiler = (webpackConfig) =>

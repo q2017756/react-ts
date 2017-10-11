@@ -261,7 +261,6 @@ config.plugins.push(new HappyPack({
   id: 'happyts',
   threadPool: happyThreadPool,
   threads: 4,
-  cache: true,
   verbose: true,
   loaders: [
     {

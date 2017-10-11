@@ -2,7 +2,7 @@ const express = require('express')
 const nodePath = require('path')
 const npmWebpack = require('webpack')
 const logger = require('../build/lib/logger.ts')
-const webpackConfig = require('../build/webpack.config.ts')
+const webpackConfig = require('../build/webpack.config.js')
 const currProject = require('../project.config.ts')
 const compress = require('compression')
 

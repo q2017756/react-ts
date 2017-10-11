@@ -12,7 +12,7 @@ export interface BaseState {
   userinfo: object,
 }
 
-const initialState = (!isNode && window.__INITIAL_STATE__.hasOwnProperty('base'))
+const initialState = isNode
 ? window.__INITIAL_STATE__.base
 : { userinfo: {
     headicon: '',

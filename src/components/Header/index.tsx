@@ -1,6 +1,6 @@
 import * as React from 'react'
-import BaseComponent from '../../../../BaseComponent'
-import { Link } from "react-router-dom"
+import BaseComponent from '../../BaseComponent'
+import { Link, NavLink } from "react-router-dom"
 import "./index.scss"
 
 interface Props{
@@ -23,8 +23,8 @@ class Header extends BaseComponent  {
       <header className="menu">
         <ul>
           <li>React Shinezone ts</li>
-          <li><Link to="/">首页</Link></li>
-          <li><Link to={{pathname:'/use'}}>构建与使用</Link></li>
+          <li><NavLink to="/" activeClassName="active">首页</NavLink></li>
+          <li><NavLink to={{pathname:'/use'}} activeClassName="active">构建与使用</NavLink></li>
           <li><a href="https://github.com/stefaniepei/react-ts" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </header>

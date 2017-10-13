@@ -1,5 +1,5 @@
 import * as React from 'react'
-import BaseComponent from '../../../../BaseComponent'
+import BaseComponent from '../../BaseComponent'
 import { Link } from 'react-router-dom'
 import './index.scss'
 

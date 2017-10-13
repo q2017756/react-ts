@@ -9,26 +9,13 @@ const isNode = typeof window === 'undefined'
 
 
 export interface BaseState {
-  userinfo: object,
+  fans: number
 }
 
 const initialState = isNode
 ? window.__INITIAL_STATE__.base
-: { userinfo: {
-    headicon: '',
-    signature: '',
-    email: '',
-    szid: '',
-    nickname: '',
-    token: '',
-    collectList: [],
-    thumpList: [],
-    thumpCommentList: [],
-    newMessageCount: 0,
-    followed: 0,
-    fans: 0,
-    feed: 0,
-  },
+: {
+  fans: 0
 }
 
 export default function(state:BaseState = initialState, action: MiddlewareAction={}): BaseState {
@@ -36,9 +23,14 @@ export default function(state:BaseState = initialState, action: MiddlewareAction
   switch(action.type) {
 
     case CONST.USER_LOGIN:
-  console.log(response)
   
     return state;
+
+    case CONST.ADD:
+      let fans = state.fans + 1
+      return objectAssign({}, state, {
+        fans,
+      })
   
     
     default:

@@ -3,6 +3,7 @@ export const enum CONST {
     USER_LOGIN,
     USER_LOGOUT,
     SEND,
+    ADD,
     SUCCESS,
     ERROR,
     FAIL

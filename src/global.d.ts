@@ -13,3 +13,4 @@ declare var window: Window;
 
 declare function unescape(s: string): string;
 declare module 'iscroll';
+declare module 'react-loadable';

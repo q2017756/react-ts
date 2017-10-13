@@ -1,13 +1,32 @@
-import {HomeIndexRouter} from '../containers/HomeIndex/router';
+import {Home} from '../containers/Home/router';
+import HomeIndex from '../containers/HomeIndex';
 import {LoginRouter} from '../containers/Home/Components/Login/router';
 import {UseRouter} from '../containers/Use/router';
+import Header from '../components/Header/index'
+import Footer from '../components/Footer/index'
 import * as React from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import * as Loadable from 'react-loadable'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 const supportsHistory = 'pushState' in window.history
 
 interface Props {
   
 }
+//
+// const AsyncHome = Loadable({
+//   loader: () => import('../containers/HomeIndex'),
+//   loading: ({isLoading, error}) => { return isLoading && !error ? <div>loading...</div> : error ? <div>error</div> : null}
+// })
+//
+// const AsyncUse = Loadable({
+//   loader: () => import('../containers/Use'),
+//   loading: ({isLoading, error}) => { return isLoading && !error ? <div>loading...</div> : error ? <div>error</div> : null}
+// })
+//
+// const AsyncLogin = Loadable({
+//   loader: () => import('../containers/Home/Components/Login'),
+//   loading: ({isLoading, error}) => { return isLoading && !error ? <div>loading...</div> : error ? <div>error</div> : null}
+// })
 
 export default class RouteConfig extends React.Component<any, any> {
   
@@ -20,36 +39,25 @@ export default class RouteConfig extends React.Component<any, any> {
   render() {
 
     return (
-      <div>
-        <Router forceRefresh={!supportsHistory}>
+      <Router>
+        <div>
+          <nav>
+            <Link to="/">home</Link>
+            <Link to="/about">about</Link>
+            <Link to="/contact">contact</Link>
+            <Link to="/other">other</Link>
+            <Link to="/use">user</Link>
+            <Link to="/login">login</Link>
+          </nav>
+          <Header />
           <Switch>
-              {LoginRouter.map((route:any, i:number) => (<Route key={i} path={route.path} component={route.component}/>))}
-              {UseRouter.map((route:any, i:number) => (<Route key={i} path={route.path} component={route.component}/>))}
-              {HomeIndexRouter.map((route:any, i:number) => (<Route key={i} path={route.path} component={route.component}/>))}
+            {Home.map((route:any, i:number) => <Route key={i} component={route.component} path={route.path} exact={router.path === '/'} />)}
+            <Route component={()=><h1>momatch</h1>} />
           </Switch>
-        </Router>
-      </div>
+          <Footer />
+        </div>
+      </Router>
     )
   }
 }
 
-
-
-
-/// / 异步路由组件
-// import { StoreAsync, RouteConfig } from "../../store/interfaces";
-// import { injectReducer } from '../../store/reducers';
-// export default (store: StoreAsync<any>): RouteConfig => ({
-//   path: '/',
-//   getComponent (nextState: any, cb: Function) {
-//     (require as any).ensure([], (require: any) => {
-//       injectReducer(store, 'base', require('../../store/base').default);
-//       const Component = require('./index').default;
-//       cb(null, Component);
-//     }, 'home');
-//   },
-//   Route: HomeIndexRouter(store),
-//   childRoutes: [
-//     UseRouter(store),
-//   ]
-// });

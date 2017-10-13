@@ -15,3 +15,9 @@ export function postUserLogin(email: any, password: any): MiddlewareAction {
     ]),
   }
 }
+
+export function add(): MiddlewareAction {
+  return {
+    type: CONST.ADD
+  }
+}
